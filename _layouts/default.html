@@ -1,21 +1,5 @@
 <!doctype html>
-<html lang="{{ site.lang | default: "en-US" }}">
-<div class="wrapper">
-    <body>
-    <header {% unless site.description or site.github.project_tagline %} class="without-description" {% endunless %}>
-        <h1>{{ site.title | default: site.github.repository_name }}</h1>
-        {% if site.description or site.github.project_tagline %}
-        <p>{{ site.description | default: site.github.project_tagline }}</p>
-        {% endif %}
-
-        {% include navigation.html %}
-    </header>
-
-
-    <section>
-        {{ content }}
-    </section>
-</div>
+<html lang="{{ site.lang }}">
 <head>
     <meta charset="utf-8">
 
@@ -26,18 +10,33 @@
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-      {% if page.mathjax %}
-      {% include mathjax.html %}
-      {% endif %}
-      {% feed_meta %}
-      {% seo %}
-  </head>
+    {% if page.mathjax %}
+    {% include mathjax.html %}
+    {% endif %}
+    {% feed_meta %}
+    {% seo %}
+</head>
+<body>
+    <div class="wrapper">
+        <header {% unless site.description or site.github.project_tagline %} class="without-description" {% endunless %}>
+            <h1>{{ site.title | default: site.github.repository_name }}</h1>
+            {% if site.description or site.github.project_tagline %}
+            <p>{{ site.description | default: site.github.project_tagline }}</p>
+            {% endif %}
+
+            {% include navigation.html %}
+        </header>
+
+        <section>
+            {{ content }}
+        </section>
+    </div>
+
     <footer>
         {% if site.github.is_project_page %}
         <p>Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}
         <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
     </footer>
-  </body>
   </body>
 </html>
