@@ -17,7 +17,7 @@ gem "github-pages", group: :jekyll_plugins
 gem "base64"
 
 group :jekyll_plugins do
-  gem "jekyll-feed", "~> 0.17"
+  gem "jekyll-feed", "~> 0.17.0"
   gem "jekyll-sitemap", "~> 1.4.0"
   gem "jekyll-seo-tag", "~> 2.8.0"
   gem "jekyll-theme-modernist", "~> 0.2.0"
