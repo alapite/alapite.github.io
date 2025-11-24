@@ -48,4 +48,36 @@ One consequence of this is that model developers have tried to keep as much work
 #### Does Your Hardware have the Software Support?
 There's no point spending lots of money on physical hardware if the software support isn't there in terms of libraries. NVIDIA is able to charge a huge premium for its GPUs because it has successfully spent the last decade building its proprietary [CUDA framework](https://en.wikipedia.org/wiki/CUDA) into a de-facto standard for doing what used to be called "deep-learning" (and is now sold as "AI"). AMD was very slow to put substantial effort into its [ROCm](https://en.wikipedia.org/wiki/ROCm) alternative, and the company offers no support for ROCm on its consumer-oriented offerings, in contrast to which NVIDIA (which already completely dominates on the high end). ROCm is therefore stuck in a "worst of both worlds" situation at present.
 
-On the other hand, the situation with Apple Silicon is far more encouraging, thanks to its [MLX framework](https://mlx-framework.org/). This has seen lots of developer take-up, with a huge [HuggingFace community](https://huggingface.co/mlx-community) which usually provides MLX versions of most open-source models within days of release. For instance, one can already find [10 different MLX-specific quantisations](https://huggingface.co/models?other=base_model:quantized:zai-org%2FGLM-4.6&sort=trending&search=mlx) of the [GLM 4.6 model](https://huggingface.co/zai-org/GLM-4.6) which was only [announced](https://z.ai/blog/glm-4.6) on the 30th of September.  
+On the other hand, the situation with Apple Silicon is far more encouraging, thanks to its [MLX framework](https://mlx-framework.org/). This has seen lots of developer take-up, with a huge [HuggingFace community](https://huggingface.co/mlx-community) which usually provides MLX versions of most open-source models within days of release. For instance, one can already find [10 different MLX-specific quantisations](https://huggingface.co/models?other=base_model:quantized:zai-org%2FGLM-4.6&sort=trending&search=mlx) of the [GLM 4.6 model](https://huggingface.co/zai-org/GLM-4.6) which was only [announced](https://z.ai/blog/glm-4.6) on the 30th of September.
+
+## How to Run the Models
+There are at least 4 methods through which one can run models locally on a MacOS machine:
+1. By using the [Ollama](https://ollama.com/) GUI application.
+2. By running the [LM Studio](https://lmstudio.ai/) GUI-based application.
+3. By using the [llama.cpp](https://github.com/ggml-org/llama.cpp) CLI application.
+4. Using the [MLX framework](https://ml-explore.github.io/mlx/build/html/index.html). Some knowledge of Python environment management is a prerequisite for this, however.
+
+Ollama and LM Studio are both available as GUI applications, which can be directly downloaded from their respective websites.  Llama.cpp isn't quite as easy to obtain as the other two, but can be installed relatively painlessly as a [HomeBrew formula](https://formulae.brew.sh/formula/llama.cpp) (as can [Ollama](https://formulae.brew.sh/formula/ollama) and [LM Studio](https://formulae.brew.sh/cask/lm-studio), for that matter).
+
+No doubt there are other options out there which I haven't listed here, but these are far and away the most popular, as far as I know. While vLLM is a popular option for serving models in the Linux world, it currently only has [experimental support](https://docs.vllm.ai/en/stable/getting_started/installation/cpu/#apple-silicon) for MacOS, and no pre-built binaries are provided: users must build this experimental version themselves, directly from the source code. 
+
+### Ollama
+Of the three options listed above, Ollama offer the most beginner-friendly approach, with a minimalistic GUI which exposes a chat window through which users can either download models, or interact with Ollama's cloud-based options (though the latter _does_ [require](https://docs.ollama.com/cloud) registering and signing-in on the Ollama website). For users interested in going beyond simply using a chat window, Ollama also provides easy-to-use [Python and JavaScript APIs](https://docs.ollama.com/api/introduction) for interacting with the models it serves. 
+
+It is possible to run Ollama purely via the [command-line](https://docs.ollama.com/cli), although the Ollama documentation doesn't really advertise this option. While the `ollama run` command can be used to interact directly with a model on the CLI, one can use Ollama purely as a headless server responding to API calls by running `ollama serve` as a background task, e.g. as in the following example.
+```shell
+OLLAMA_FLASH_ATTENTION="1" OLLAMA_KV_CACHE_TYPE="q8_0" ollama serve &
+```
+
+As easy as Ollama is to install and interact with, one major drawback from which it suffers is a [lack](https://www.reddit.com/r/ollama/comments/1mdxeon/is_it_possible_to_run_mlx_model_through_ollama/) of [support](https://github.com/ollama/ollama/pull/9118) for MLX. What that translates into in real terms is that the models supported by Ollama cannot take full advantage of the GPUs on Apple Silicon.
+
+Another issue with Ollama, and one clearly stemming from the focus on keeping the UI as minimal and streamlined as possible, is the lack of any means to interact with MCP servers without writing some code or using [curl](https://curl.se/). Admittedly, calling MCP servers is easy enough [through the API](https://docs.ollama.com/capabilities/tool-calling), for users willing to either write some Python/JavaScript or fiddle with the commend-line.  
+
+### LM Studio
+Like Ollama, LM Studio offers a comfortable UI experience for beginners. Where it goes beyond Ollama is that by switching the UI view from "User" to "Power User" to "Developer", it is possible to expose increasingly sophisticated functionality that goes well beyond anything in Ollama. For example, as a "Power User", one can monitor the logs for the LM Studio backend, change various server parameter settings, and browse a directory of local models (including viewing their raw sizes and quantisations).
+
+One nice feature of LM Studio is that adding support for MCP servers through the UI is a relatively painless experience. Out of the box, LM Studio provides a local RAG implementation which can be used simply by adding files as attachments to a chat. Additional MCP servers can be added either by editing an `mcp.json` file, or by clicking on a `Add to LM Studio` button wherever one is available. Once an MCP server has been added, the LM Studio UI makes it easy to tweak the server's parameters and permissions.
+
+Another selling point of LM Studio is that - unlike Ollama - it has good [MLX support](https://lmstudio.ai/blog/unified-mlx-engine), meaning one can use any of the (at last count) 3,230 models provided by the [MLX Community](https://huggingface.co/mlx-community) on HuggingFace. Of course, which of these models one can take advantage of will still be determined by how much RAM one's system has onboard.
+
+A final point worth mentioning is that like Ollama, LM Studio provides an easy-to-use [API](https://lmstudio.ai/docs/developer) with bindings for both Python and TypeScript. Like Ollama, LM Studio also provides the option to run in [headless mode](https://lmstudio.ai/docs/developer/core/headless), i.e. purely as a service, without a UI taking up any memory.
