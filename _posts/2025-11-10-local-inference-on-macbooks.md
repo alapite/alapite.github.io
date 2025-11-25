@@ -1,6 +1,11 @@
 ---
 author: Abiola Lapite
-tags: llms
+tags:
+  - llms
+  - ai
+  - machine-learning
+  - macos
+  - macbook
 categories: machine-learning
 ---
 In my [previous post](2025-11-10-local-inference-on-macbooks.md) I laid out some issues to keep in mind when deciding whether it is worth going to the trouble of running LLMs locally. As I tried to make clear, the answer in most cases is almost certainly "No". The answer is only clearly "Yes" when 
@@ -41,3 +46,35 @@ My own reason for bothering with running anything locally is simply because I al
 To be honest, the very idea of "vibe coding" holds no interest for me, being an old-fashioned type who desires a crystal-clear understanding of every line of code I'm responsible for. Nor would slow token output bother me very much even if I were a "vibe coder" in the making, as in my professional career I have never once encountered a situation in which the speed at which code is produced has ever been a constraint on how quickly I've met my development goals. As such, I am perfectly content letting a model take several minutes to do its thing in the background as I concentrate on something else, which is what my present setup allows me to do, however lacking it may be in comparison to, say, an M4-Max MacBook Pro with 128 GB of RAM and 576 GB/s of memory bandwidth to service it. 
 
 Finally, nothing I want to do with LLMs requires me to handle sensitive private data, so if I really do require a model beyond my machine's capabilities, I can spare the <span>$</span>0.50/million input tokens and <span>$</span>1.75/million output tokens at which a cutting-edge model like [GLM-4.6](https://www.helicone.ai/llm-cost/provider/openrouter/model/z-ai%2Fglm-4.6) is currently being offered online. Even in the (extremely unlikely) scenario in which I had to run through a **billion** each of input and output tokens, I would still be spending a lot only \$2,250, less than **half** the £5,000 it would cost to buy a 128 GB M4-Max MacBook Pro to replace the hardware I currently own. 
+
+## How to Run the Models
+There are at least 4 methods through which one can run models locally on a MacOS machine:
+1. By using the [Ollama](https://ollama.com/) GUI application.
+2. By running the [LM Studio](https://lmstudio.ai/) GUI-based application.
+3. By using the [llama.cpp](https://github.com/ggml-org/llama.cpp) CLI application.
+4. Using the [MLX framework](https://ml-explore.github.io/mlx/build/html/index.html). Some knowledge of Python environment management is a prerequisite for this, however.
+
+Ollama and LM Studio are both available as GUI applications, which can be directly downloaded from their respective websites.  Llama.cpp isn't quite as easy to obtain as the other two, but can be installed relatively painlessly as a [HomeBrew formula](https://formulae.brew.sh/formula/llama.cpp) (as can [Ollama](https://formulae.brew.sh/formula/ollama) and [LM Studio](https://formulae.brew.sh/cask/lm-studio), for that matter).
+
+No doubt there are other options out there which I haven't listed here, but these are far and away the most popular, as far as I know. While vLLM is a popular option for serving models in the Linux world, it currently only has [experimental support](https://docs.vllm.ai/en/stable/getting_started/installation/cpu/#apple-silicon) for MacOS, and no pre-built binaries are provided: users must build this experimental version themselves, directly from the source code.
+
+### Ollama
+Of the three options listed above, Ollama offer the most beginner-friendly approach, with a minimalistic GUI which exposes a chat window through which users can either download models, or interact with Ollama's cloud-based options (though the latter _does_ [require](https://docs.ollama.com/cloud) registering and signing-in on the Ollama website). For users interested in going beyond simply using a chat window, Ollama also provides easy-to-use [Python and JavaScript APIs](https://docs.ollama.com/api/introduction) for interacting with the models it serves.
+
+It is possible to run Ollama purely via the [command-line](https://docs.ollama.com/cli), although the Ollama documentation doesn't really advertise this option. While the `ollama run` command can be used to interact directly with a model on the CLI, one can use Ollama purely as a headless server responding to API calls by running `ollama serve` as a background task, e.g. as in the following example.
+```shell
+OLLAMA_FLASH_ATTENTION="1" OLLAMA_KV_CACHE_TYPE="q8_0" ollama serve &
+```
+
+As easy as Ollama is to install and interact with, one major drawback from which it suffers is a [lack](https://www.reddit.com/r/ollama/comments/1mdxeon/is_it_possible_to_run_mlx_model_through_ollama/) of [support](https://github.com/ollama/ollama/pull/9118) for MLX. What that translates into in real terms is that the models supported by Ollama cannot take full advantage of the GPUs on Apple Silicon.
+
+Another issue with Ollama, and one clearly stemming from the focus on keeping the UI as minimal and streamlined as possible, is the lack of any means to interact with MCP servers without writing some code or using [curl](https://curl.se/). Admittedly, calling MCP servers is easy enough [through the API](https://docs.ollama.com/capabilities/tool-calling), for users willing to either write some Python/JavaScript or fiddle with the commend-line.
+
+### LM Studio
+Like Ollama, LM Studio offers a comfortable UI experience for beginners. Where it goes beyond Ollama is that by switching the UI view from "User" to "Power User" to "Developer", it is possible to expose increasingly sophisticated functionality that goes well beyond anything in Ollama. For example, as a "Power User", one can monitor the logs for the LM Studio backend, change various server parameter settings, and browse a directory of local models (including viewing their raw sizes and quantisations).
+
+One nice feature of LM Studio is that adding support for MCP servers through the UI is a relatively painless experience. Out of the box, LM Studio provides a local RAG implementation which can be used simply by adding files as attachments to a chat. Additional MCP servers can be added either by editing an `mcp.json` file, or by clicking on a `Add to LM Studio` button wherever one is available. Once an MCP server has been added, the LM Studio UI makes it easy to tweak the server's parameters and permissions.
+
+Another selling point of LM Studio is that - unlike Ollama - it has good [MLX support](https://lmstudio.ai/blog/unified-mlx-engine), meaning one can use any of the (at last count) 3,230 models provided by the [MLX Community](https://huggingface.co/mlx-community) on HuggingFace. Of course, which of these models one can take advantage of will still be determined by how much RAM one's system has onboard.
+
+A final point worth mentioning is that like Ollama, LM Studio provides an easy-to-use [API](https://lmstudio.ai/docs/developer) with bindings for both Python and TypeScript. Like Ollama, LM Studio also provides the option to run in [headless mode](https://lmstudio.ai/docs/developer/core/headless), i.e. purely as a service, without a UI taking up any memory.
