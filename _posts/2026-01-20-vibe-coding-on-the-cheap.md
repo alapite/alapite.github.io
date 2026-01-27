@@ -1,8 +1,11 @@
 ---
 author: Abiola Lapite
 mathjax: true
-tags: mathematics
-categories: mathematics
+tags:
+  - Large Language Models
+  - Machine Learning
+  - Programming
+categories: programming
 ---
 Lately, there's been a lot of online buzz about the capabilities of Anthropic's ["Claude Code"](https://claude.com/product/claude-code) offering, and how it's supposedly making a tremendous difference to how developers are approaching their jobs. Going by what one sees on sites like Reddit and Hacker News, nothing less than a top-tier _Claude Code Max_ account will do to experience this wonderful new world, but we're hardly talking chicken change at £200/month. It may be that many of those raving about Claude Code are having their accounts paid for by their employers, but what if that isn't an option? Is there really no choice but to swallow any reservations and hand over all that money to Anthropic, no matter one's personal circumstances? 
 
