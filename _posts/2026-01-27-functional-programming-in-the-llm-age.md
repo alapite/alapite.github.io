@@ -33,5 +33,39 @@ As plentiful as the freely available, online training data for programming has b
 
 What makes this development troubling for model-developers is that the with "vibe code" generated for users who either lack programming skills or lack interest in expending effort on code quality, most of the old indicators of quality will lose their predictive power. It used to be possible for scientists to tell the cranks from serious correspondents through "tells" such as idiosyncratic spelling and terrible grammar, but that now chatbots make it possible for crackpots to generate perfectly grammatical screeds with impeccable spelling, telling the kooks apart has become a lot harder. The ability of agentic-coding frameworks to generate syntactically valid code that passes standard linting, code-coverage and security tests presents LLM developers with much the same challenge from here on out. Just because code compiles, passes stylistic checks, and has no glaring security issues, doesn't mean the code actually captures the **intent** behind its creation.  
 
+## The Difference Typing Makes
+If model developers can't rely on getting access to vast new amounts of code to train their models, what choice is left to them? The obvious one is to use **synthetic** data, but what would that look like in the realm of programming?
+
+Every few years, someone gets the bright idea to create a new programming language intended for absolute beginners. Amongst the decisions usually made in pursuit of this goal, perhaps the most prominent is how typing is treated, or rather, **NOT** treated (at least explicitly). There are a few popular ways to achieve this goal, each with its own drawbacks. 
+
+With a language like Python, this attempt to make beginners' lives easier means users are never required to explicitly specify the types of the objects they manipulate, leaving the interpreter to automatically infer the types under the covers (which it always does, as Python is in fact a **strongly-typed** language). For example, given the following snippet
+```python
+x = 156
+y = "zebra"
+```
+Python infers that x is an integer, and that y is a string, so there is no type ambiguity at the interpreter level. However, a requirement for keeping all that typing detail hidden from the user is that actions must be permitted which could easily lead to confusion. For example, a variable assigned a value of one type can later be assigned a value of an entirely different type. In other words, code like 
+```python
+x = 156
+y = "zebra"
+x = "seahorse"
+y = 22.5
+``` 
+is perfectly legal Python. While this permissiveness makes learning the language easier at the very beginning, it quickly turns into a burden as the size and complexity of a codebase increases. Having to keep track in one's head of the exact types every function or method call takes and returns is too much to handle once these start running into the tens or hundreds. It's therefore unsurpring that so much effort has gone into adding [typing annotation support](https://docs.python.org/3/library/typing.html) into the language and its libraries over the last several years. Even so, the languag still has no means to enforce these annotations at runtime, which is why Python developers are forced to bolt on linters like [Mypy](https://mypy.readthedocs.io/en/stable/) and [Basedpyright](https://docs.basedpyright.com/latest/) to secure some of the benefits of explicit typing.
+
+Another common approach to creating an "easier" and more "beginner-friendly" language is to do what JavaScript does, which is to bend over backwards to try to make sense out of the most seemingly nonsensical value and object assignments. For example, the language permits the following.
+```javascript
+let a = 12;
+let b = "13";
+let c = a + b;
+```
+What should the value of `c` be in the above? In this case, the variable `a` is coerced to a string type, so the operation `a + b` is treated as string concatenation, and the value of `c` is set to "1213". In a similarly confusing vein, the following assertions all evalue to `True`...
+```javascript
+assert(0 == "");
+assert([] == "");
+assert({} != "");
+```
+JavaScript would still be a terrible language for [many](https://blog.sea.nkelley.me/javascript-the-bad-parts) [other](https://www.botzilla.com/blog/archives/000749.html) [reasons](https://owasp.org/www-chapter-belgium/assets/2016/2016-03-08/JS_RobustModern_VanCutsem_OWASP2016.pdf) than weak-typing, but this particular "feature" is definitely a major reason why [TypeScript](https://www.typescriptlang.org/) has proven so popular as a safer alternative.
+
+A third approach to making a language "easier" to learn and do what the creators of Go did initially, by putting out a language which **does** have basic support for explicit strong typing, but which provides [no means](https://stackoverflow.com/questions/3912089/why-are-there-no-generics-in-go) for writing [generic](https://en.wikipedia.org/wiki/Generic_programming) code.
+
 ## Functional Programming to the Rescue?
-If model developers can't rely on getting access to vast new amounts of code to train their models, what choice is left to them? The obvious one is to use **synthetic** data, but what would that look like in the realm of programming?  
