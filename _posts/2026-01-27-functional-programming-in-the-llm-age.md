@@ -66,6 +66,15 @@ assert({} != "");
 ```
 JavaScript would still be a terrible language for [many](https://blog.sea.nkelley.me/javascript-the-bad-parts) [other](https://www.botzilla.com/blog/archives/000749.html) [reasons](https://owasp.org/www-chapter-belgium/assets/2016/2016-03-08/JS_RobustModern_VanCutsem_OWASP2016.pdf) than weak-typing, but this particular "feature" is definitely a major reason why [TypeScript](https://www.typescriptlang.org/) has proven so popular as a safer alternative.
 
-A third approach to making a language "easier" to learn and do what the creators of Go did initially, by putting out a language which **does** have basic support for explicit strong typing, but which provides [no means](https://stackoverflow.com/questions/3912089/why-are-there-no-generics-in-go) for writing [generic](https://en.wikipedia.org/wiki/Generic_programming) code.
+A third approach to making a language "easier" to learn and do what the creators of Go did initially, by putting out a language which **does** have basic support for explicit strong typing, but which provides [no means](https://stackoverflow.com/questions/3912089/why-are-there-no-generics-in-go) for writing [generic](https://en.wikipedia.org/wiki/Generic_programming) code. It only took [12 years](https://go.dev/blog/go1.18) for the Go team to learn the same lesson Java's creators had been forced to learn some [18 years earlier](https://en.wikipedia.org/wiki/Generics_in_Java). Needless to say, Python's type annotations now also provide support for generics, including support for [type variance](https://en.wikipedia.org/wiki/Type_variance) (i.e. invariance, covariance and contravariance).
 
-## Functional Programming to the Rescue?
+In summary, those who fail to start with explicit, strong-typing are eventually forced to bolt it on anyway, with all the drawbacks that accompany such retrospective patching up. Strong explicit types simply offer too many benefits in ensuring program correctness and comprehensibility to be ignored.   
+
+## The Limits of Typing
+If the explicit, generic-supporting type-systems offered by languages like C#, Java, Swift and TypeScript are so beneficial, it is only natural to wonder whether this can be built upon further. Just how far can we go in capturing the intended **semantics** of the code we're writing through the **syntax** of the code's typing?
+
+In an ideal world, it would be possible to capture **everything** we wanted to say in a programming language's type system, while being sure that the types of our programs captured **only** those meanings we wanted to encode. In this world, the [old dream](https://publicdomainreview.org/essay/let-us-calculate-leibniz-llull-and-the-computational-imagination/) of the philosopher Leibniz could be realised, and by properly formalising all assertions, any argument could be decisively reduced to the simple phrase _"Let us calculate"_. 
+
+Sadly, however, ours is **not** a universe in which Leibniz' dream can ever be realised, and it simply isn't possible for any type-system to perfectly capture the exact meaning (and **only** said meaning) of any arbitary notion we may wish to codify.
+
+Functional Programming to the Rescue?
