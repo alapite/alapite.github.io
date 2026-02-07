@@ -1,5 +1,6 @@
 ---
 author: Abiola Lapite
+title: Functional Programming in the LLM Age
 mathjax: true
 tags:
   - Large Language Models
