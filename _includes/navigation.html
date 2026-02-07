@@ -1,7 +1,15 @@
-<nav>
+<nav class="site-nav" aria-label="Primary navigation">
+  <ul class="site-nav__list">
   {% for item in site.data.navigation %}
-    <a href="{{ item.link }}" {% if page.url == item.link %}class="current"{% endif %}>
-      {{ item.name }}
-    </a>
-    {% endfor %}
+    <li>
+      <a
+        href="{{ item.link | relative_url }}"
+        class="site-nav__link{% if page.url == item.link %} is-current{% endif %}"
+        {% if page.url == item.link %}aria-current="page"{% endif %}
+      >
+        {{ item.name | escape }}
+      </a>
+    </li>
+  {% endfor %}
+  </ul>
 </nav>

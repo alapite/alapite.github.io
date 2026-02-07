@@ -5,4 +5,5 @@ _site
 vendor
 *.bak
 Gemfile.lock
-
+AGENTS.md
+.planning/

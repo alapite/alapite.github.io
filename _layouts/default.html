@@ -1,39 +1,41 @@
 <!doctype html>
-<html lang="{{ site.lang }}">
-<head>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
     <meta charset="utf-8">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | default: site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
     {% seo %}
-
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    {% include mathjax.html %}
     {% feed_meta %}
-    {% seo %}
-</head>
-<body>
-    <div class="wrapper">
-        <header {% unless site.description or site.github.project_tagline %} class="without-description" {% endunless %}>
-            <h1>{{ site.title | default: site.github.repository_name }}</h1>
-            {% if site.description or site.github.project_tagline %}
-            <p>{{ site.description | default: site.github.project_tagline }}</p>
-            {% endif %}
+    {% if page.mathjax %}
+      {% include mathjax.html %}
+    {% endif %}
+  </head>
+  <body class="layout-{{ page.layout | default: 'default' | slugize }}">
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-header__inner">
+          <p class="site-title">
+            <a href="{{ '/' | relative_url }}">{{ site.title | escape }}</a>
+          </p>
+          {% if site.description %}
+            <p class="site-tagline">{{ site.description | escape }}</p>
+          {% endif %}
+          {% include navigation.html %}
+        </div>
+      </header>
 
-            {% include navigation.html %}
-        </header>
+      <main id="content" class="site-main" aria-label="Content">
+        <div class="site-main__inner">
+          {{ content }}
+        </div>
+      </main>
 
-        <section>
-            {{ content }}
-        </section>
+      <footer class="site-footer">
+        <div class="site-footer__inner">
+          <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title | escape }}. Hosted on GitHub Pages.</p>
+        </div>
+      </footer>
     </div>
-
-    <footer>
-        {% if site.github.is_project_page %}
-        <p>Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
-        {% endif %}
-        <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
-    </footer>
   </body>
 </html>

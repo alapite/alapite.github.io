@@ -31,9 +31,10 @@ defaults:
       layout: "default"
 
 # Build settings
-remote_theme: pages-themes/modernist@v0.2.0
-theme: jekyll-theme-modernist
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+
+exclude:
+  - AGENTS.md
