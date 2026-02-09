@@ -15,7 +15,29 @@ It seems clear to me that over the last 10 years, there's been a dramatic declin
 
 A strictly functional approach would have opened the door to applying insights from [category theory](https://en.wikipedia.org/wiki/Category_theory) to real-world programming. This in turn would have made it possible to leave behind the world of stateful objects and pre-baked design patterns, and replacing these old notions with clearer concepts which could be rigorously reasoned about. In this brave new world, programs could essentially be delegated to the type-system, so that one could be absolutely certain that any passing code would do the right thing under all circumstances (assuming its initial premises correctly captured whatever goal the program was written for). While problem-free concurrency was usually pushed as the main selling-point for a purely functional approach, the elimination of most of the concurrency issues which plagued (and still plagues) traditional software would have been just one concrete manifestation of all the benefits that would have accrued. 
 
-On paper, the argument for pure FP was compelling, but once efforts began to translate it into the real world of commercial programming, difficulties quickly become apparent. Not least of these difficulties was that most programmers (and most STEM people who aren't mathemticians) get no exposure to category theory in the course of their educations, and aren't used to the careful step-by-step reasoning from axioms that is the bread and butter of the world of pure mathematics. When faced with calls to quickly adopt reams of utterly unfamilar ideas about ["morphisms"](https://en.wikipedia.org/wiki/Morphism), ["functors"](https://en.wikipedia.org/wiki/Functor), ["monads"](https://en.wikipedia.org/wiki/Monad_(category_theory)), ["natural transformations"](https://en.wikipedia.org/wiki/Natural_transformation) and the like, they understandably struggle, especially when faced with ["diagram chasing"](https://en.wikipedia.org/wiki/Commutative_diagram#Diagram_chasing) commutative diagrams. As a particularly [notorious joke](https://stackoverflow.com/questions/3870088/a-monad-is-just-a-monoid-in-the-category-of-endofunctors-whats-the-problem) on the whole business goes, _"A monad is just a monoid in the category of endofunctors, what's the problem?"_
+## Why Functional Programming Lost Steam
+
+On paper, the argument for pure FP was compelling, but once efforts began to translate it into the real world of commercial programming, difficulties quickly become apparent. Not least of these difficulties was that most programmers (and most STEM people who aren't mathemticians) get no exposure to category theory in the course of their educations, and aren't used to the careful step-by-step reasoning from axioms that is the bread and butter of the world of pure mathematics. When faced with calls to quickly adopt reams of utterly unfamilar ideas about ["morphisms"](https://en.wikipedia.org/wiki/Morphism), ["functors"](https://en.wikipedia.org/wiki/Functor), ["monads"](https://en.wikipedia.org/wiki/Monad_(category_theory)), ["natural transformations"](https://en.wikipedia.org/wiki/Natural_transformation) and the like, they understandably struggle, especially when faced with ["diagram chasing"](https://en.wikipedia.org/wiki/Commutative_diagram#Diagram_chasing) commutative diagrams (e.g. the following one used in the proof of the [Yoneda Lemma](https://en.wikipedia.org/wiki/Yoneda_lemma)).
+
+$$
+\begin{array}{c}
+\begin{CD}
+\mathrm{Hom}_{\mathcal C}(A,A) @>{\mathrm{Hom}_{\mathcal C}(A,f)}>> \mathrm{Hom}_{\mathcal C}(A,X) \\
+@V{\Phi_A}VV @VV{\Phi_X}V \\
+F(A) @>>{Ff}> F(X)
+\end{CD}
+\\[2em]
+\begin{CD}
+\mathrm{id}_A @>{\mathrm{Hom}_{\mathcal C}(A,f)}>> f \\
+@V{\Phi_A}VV @VV{\Phi_X}V \\
+u @>>{Ff}> (Ff)u = \Phi_X(f)
+\end{CD}
+\end{array}
+$$
+
+(Proof of Yoneda's lemma. Here $F:\mathcal C\to\mathbf{Set}$, $f:A\to X$, $\Phi:\mathrm{Hom}_{\mathcal C}(A,-)\Rightarrow F$, and $u=\Phi_A(\mathrm{id}_A)$, so $\Phi_X(f)=(Ff)(u)$.)
+
+As a particularly [notorious joke](https://stackoverflow.com/questions/3870088/a-monad-is-just-a-monoid-in-the-category-of-endofunctors-whats-the-problem) on the whole business goes, _"A monad is just a monoid in the category of endofunctors, what's the problem?"_
 
 With all of the above in mind, it's not surprising that an entire industry sprang up around writing [monad tutorials](https://wiki.haskell.org/Monad_tutorials_timeline), most of which had the perverse effect of worsening understanding of the concept, due to their inprecision. One person says _"a monad is just like a burrito"_, then another says _"no, it's actually like a spaceship"_, and now a third pops up to insist _"actually, a monad is like a railway"_, and on and on the sloppy metaphors go, leaving trails of confusion in their wake. The funny thing is that, setting aside all the fancy LaTeX typesetting and the preparatory definitional jargon, the actual mathematical ideas are themselves quite simple, and once one grasps them, the likely reaction will be _"So that's all there is to it?"_ Unfortunately most programmers trying to get into the topic won't manage to stumble upon a [decent tutorial](https://github.com/hmemcpy/milewski-ctfp-pdf) before deciding it's all too much, and retreating to the world of OOP and [Gang of Four design patterns](https://en.wikipedia.org/wiki/Design_Patterns). For all their flaws, these old ideas are much easier to grasp, and numerous implementations of them are available in any reasonably popular language. 
 
