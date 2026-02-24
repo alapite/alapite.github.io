@@ -49,6 +49,30 @@ Perhaps the most widely known fact about the Arabic numerals is that they are no
 
 What makes Arabic numerals so powerful? At the core of their appeal is that they are a positional notation, which provides a systematic, easily comprehensible way to build ever larger numbers, using only a few digit forms. After mastering the ten digits from 0 to 9, all one has to do is understand is the order in which digits read from least to most significant (which is typically right to left). If you know how to build 10, `11, 12, ... 19`, then `20, 21, ... 29` is immediately obvious, as is the fact that `99` must be followed by `100`, `999` by `1000`, and so on ad infinitum. There are no weird exceptions to worry about, there are no surprising switches between additive and subtractive processes, there is no need to recruit new symbols upon reaching a certain value, etc.
 
+As powerful as the Arabic numerical system is in its ordinary form, it can be made far more powerful still with just a small tweak. By the use of [Scientific Notation](https://en.wikipedia.org/wiki/Scientific_notation), one can succinctly represent values of such magnitude that the mind will struggle to truly comprehend. All that needs to change is to replace the explicit listing of all the digits of a value with a symbol representing the number of such digits, so that a value like `3,000,000` becomes $ 3 * 10^6 $, and instead of writing, for example, 8 billion as `8,745,000,000` we can simply say $ 8.745 * 10^9 $. 
+
+To give an idea of just how powerful scientific notation is, 
+- The United Nations estimated the entire world's GDP for 2024 at about `100,834,796,000,000` which is less than $ 1.001 * 10^{15} $. 
+- The distance from Earth to the Sun is approximately $148 * 10^{9}$ meters. 
+- The distance from Earth to Pluto is about $5.43 * 10^{12}$ meters. 
+- The distance light travels in a year is ~ $9.4607 * 10^{15}$ meters. The distance from Earth to Proxima Centauri, the closest star outside our solar system, is 4.246 light years, or ~ $4.02 * 10^{16}$ meters.
+- The [observable universe](https://en.wikipedia.org/wiki/Observable_universe) [^1] is estimated at 95 billion light years across, or less than $10^{16}$ meters. 
+- The total mass of the observable universe is estimated at $1.5 x 10^{53}$ kg. The number of particles in it [is estimated](https://www.popularmechanics.com/space/a27259/how-many-particles-are-in-the-entire-universe/) at $3.28 x 10^{80}$. Even if that number were low by a factor of a trillion, that would still be well below $10^{100}$, which is the definition of a [Googol](https://en.wikipedia.org/wiki/Googol) (after which the company Google was named).
+
+Using the same notation but going in the opposite direction,
+1. The mass of a single proton is estimated at less than $2 * 10^{-27}$ kg.
+2. The Planck length, below which the theory of general relativity is expected to fail, is about $1.62 x 10^{-35}$ meters. 
+
+Scientific notation is so powerful that it can represent the ratio between the mass of the entire observable universe and the mass of a single proton compactly as less than $10^{80}$. And yet, as powerful as examples like this show scientific notation to be, they still do not provide a full picture of what this notation makes possible.
+
+The important thing to note here is that the same trick by which scientific notation so succinctly represents huge numbers can be applied recursively. If a number like $10^{10}$ is permissible, then why not $10^{10^{10}}$? This extension of the notation introduces no problems as long as there is agreement the order in which values are to be evaluated. In keeping with standard practice with Arabic numerals, this is usually right to left, so given a number like $10^{20^{30}}$, the $20^{30}$ is evaluated first, with the resulting value then applied to the leftmost $10$ . This straightforward extension makes it possible to represent values like $10^{10^{120}}$ (an upper bound on how long it will take for the entire universe to cool down to absolute zero, according to some cosmological models).
+
+Of course, having taken this recursive step to increase our notational power, nothing stops us from repeating it yet again, so we could have $10^{20^{30^{40}}}$ and so on ad infinitum. Using this approach, we can represent numbers [as large as](https://googology.fandom.com/wiki/Poincar%C3%A9_recurrence_time) the Poincaré recurrence time, an estimate of how long it would take for a [Boltzmann brain](https://en.wikipedia.org/wiki/Boltzmann_brain) to spontaneously form in a heat-dead universe. 
+
+One quickly apparent roadblock to expanding on this approach is that it fares poorly with standard typesetting. Accommodating the nesting of numbers more than 2 levels requires rows to either become irregularly spaced, or, if uniform spacing is desired, so far apart that reading can become a chore. As it turns out, there are yet more powerful notational systems which get around this issue, even for values no one would dream of using any variation of scientific notation for.
+
+### Beyond Arabic Numerals
+
 Let's see how $ f_8(8) $ is displayed.
 
 What about $ f_{\omega}(3) $ ?
@@ -59,3 +83,4 @@ So far so good. Now for $ f_{\varepsilon + 1}(3) $.
 
 Here's an example of a Feferman-Schutte ordinal: $ f_{\Gamma}(3) $.
 
+[^1]: Which is **not** the whole universe, just the part whose light has had enough time to reach us.
