@@ -96,9 +96,9 @@ So far, so reasonable. But then, things take a sudden turn:
 
 $BB(6)$ is where we really run into trouble. An early bound for this was
 
-- $BB(6) > 10^{10^{10^{3,314,360}}}$
+- $BB(6) > 10^{10^{10^{3314360}}}$
 
-but this has since been shown to be a very, very weak lower bound on the true value, and to even describe the most recent bound, we are forced to introduce a new way of writing numbers
+but this has since been shown to be a very, very weak lower bound on the true value, and to even describe the most recent bound, we are forced to introduce a new way of writing numbers.
 
 ### Enter Knuth's Up-Arrow Notation
 
