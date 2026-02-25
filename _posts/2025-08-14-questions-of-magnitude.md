@@ -1,5 +1,6 @@
 ---
 author: Abiola Lapite
+title: Questions of Magnitude - I
 mathjax: true
 tags: mathematics
 categories: mathematics
@@ -29,12 +30,13 @@ The Uruk in which these cuneiform tablets emerged, with its several thousand inh
 
 Their Babylonian successors simplified this system, retaining only the base 60, but they also substantially [expanded on it](https://en.wikipedia.org/wiki/Babylonian_mathematics), developing the first algebraic methods for solving quadratic equations, discovering how to model exponential growth (for the purpose of calculating interest on loans), and drawing up methods for calculating areas and volumes (using a rough approximation $\pi \approx 3$). Finally, the Babylonians were the first to make written records of [their astronomical observations](https://en.wikipedia.org/wiki/Babylonian_astronomy). These records would prove of enormous significance for the subsequent development of not just astronomy, but physics in general (more on which we save for another day). 
 
-### The Greeks and their gifts
-While the Greeks of classical antiquity (i.e. from about 600 BCE onwards) were heirs to what the Babylonians had achieved and the Egyptians subsequently refined, the contributions [made by Greek thinkers](https://en.wikipedia.org/wiki/Ancient_Greek_mathematics) to this body of shared knowledge were truly revolutionary, introducing ideas about logic and proof that remain central to mathematics to this day. Readers interested in appreciating the colossal scope of the Greek contribution can consult the Wikipedia article I've linked to, but for the purpose of this article, we can restrict our attention to noting that these early Greeks were comfortable enough with handling large numbers to justify needing a name 100 million ($10^8$), a value far in excess of anything any bureaucrat would ever have needed for administrative purposes, especially in a world whose entire human population was probably still less than that value. Numbers as large as $10^{16}$ could easily be represented as squares of these smaller values (e.g. $$ 10^{16} = (10^8)^2 $$).   
+## The Greeks and their gifts
+While the Greeks of classical antiquity (i.e. from about 600 BCE onwards) were heirs to what the Babylonians had achieved and the Egyptians subsequently refined, the contributions [made by Greek thinkers](https://en.wikipedia.org/wiki/Ancient_Greek_mathematics) to this body of shared knowledge were truly revolutionary, introducing ideas about logic and proof that remain central to mathematics to this day. Readers interested in appreciating the colossal scope of the Greek contribution can consult the Wikipedia article I've linked to, but for the purpose of this article, we can restrict our attention to noting that these early Greeks were comfortable enough with handling large numbers to justify needing a name 100 million ($10^8$), a value far in excess of anything any bureaucrat would ever have needed for administrative purposes, especially in a world whose entire human population was probably still less than that value. Numbers as large as $10^{16}$ could easily be represented as squares of these smaller values, e.g. $$ 10^{16} = (10^8)^2 $$   
 
-Beyond this, Archimedes, in his work [The Sand Reckoner](https://en.wikipedia.org/wiki/The_Sand_Reckoner), attempted to estimate how many grains of sand could fit into the universe (as it was known at the time). Towards this end, Archimedes was driven to invent a new system to represent numbers, through which he was able to represent numbers as large as $$ 10^{8*10^{16}} $$. While it may not be obvious to anyone unfamiliar with exponential notation, this value is so gigantic that the most generous estimate for the number of particles in the observable universe (as currently understood) would not even be a rounding error next to it!        
+Beyond this, Archimedes, in his work [The Sand Reckoner](https://en.wikipedia.org/wiki/The_Sand_Reckoner), attempted to estimate how many grains of sand could fit into the universe (as it was known at the time). Towards this end, Archimedes was driven to invent a new system to represent numbers, through which he was able to represent numbers as large as $$ 10^{8*10^{16}} $$ 
+While it may not be obvious to anyone unfamiliar with exponential notation, this value is so gigantic that the most generous estimate for the number of particles in the observable universe (as currently understood) would not even be a rounding error next to it!        
 
-### What the Roman didn't do for us
+## What the Roman didn't do for us
 For all of the ancient Romans' strengths in administrating, engineering and soldiering, abstract thinking was **not** their forté, especially when divorced from all real world application. Apart from their creation of a "Pax Romana" which enabled the spread of Greek thought throughout the mediterranean, the primary impact of the Romans was their invention of an exceedingly [clumsy numeral system](https://en.wikipedia.org/wiki/Roman_numerals) which would cause headaches for many a literate European for the next 2 millennia.
 
 Amongst the many issues with Roman numerals are
@@ -44,7 +46,7 @@ Amongst the many issues with Roman numerals are
  - The clumsiness of arithmetic operations. Take multiplication; an algorithm for carrying it out [does exist](https://rbutterworth.nfshost.com/Tables/romanmult/), but it is a far more tedious process than the standard one taught in elementary schools today. As for division, it seems the Romans made rarely use of the operation beyond halving, and on such rare occasions could rely on a method called [Egyptian division](https://www.themathdoctors.org/arithmetic-with-roman-numerals/). In practice, it seems that for most non-trivial arithmetic, the Romans relied on the [hand abacus](https://cacm.acm.org/blogcacm/how-did-the-romans-calculate/) to do the heavy lifting.
  - The inability to represent really large numbers. In [this Wikipedia article](https://en.wikipedia.org/wiki/Roman_numerals#Large_numbers), mention is made of the _"Apostrophus"_ and _"Vinculum"_ methods for handling large numbers, but neither system can handle values in the hundreds of millions, let alone in the billions (which now routinely occur in everyday discourse).   
 
-### The Arabs and their numerals
+## The Arabs and their numerals
 Perhaps the most widely known fact about the Arabic numerals is that they are not an original Arabic invention, but are actually Hindu in origin, tracing their roots all the way back to the [Brahmi numeral system](https://en.wikipedia.org/wiki/Brahmi_numerals) in the 3rd century BCE. Still, even granting this much, the fact remains that it was through the system's widespread adoption in the Arab world that Europeans eventually came to learn about it, and through them in turn, the rest of the world. Arabic numerals were so tremendous a step forward that they have now swept aside older number systems even in cultures with thousands of years of their own traditions (e.g. China, Korea, Japan and all of South East Asia).
 
 What makes Arabic numerals so powerful? At the core of their appeal is that they are a positional notation, which provides a systematic, easily comprehensible way to build ever larger numbers, using only a few digit forms. After mastering the ten digits from 0 to 9, all one has to do is understand is the order in which digits read from least to most significant (which is typically right to left). If you know how to build 10, `11, 12, ... 19`, then `20, 21, ... 29` is immediately obvious, as is the fact that `99` must be followed by `100`, `999` by `1000`, and so on ad infinitum. There are no weird exceptions to worry about, there are no surprising switches between additive and subtractive processes, there is no need to recruit new symbols upon reaching a certain value, etc.
@@ -69,18 +71,39 @@ The important thing to note here is that the same trick by which scientific nota
 
 Of course, having taken this recursive step to increase our notational power, nothing stops us from repeating it yet again, so we could have $10^{20^{30^{40}}}$ and so on ad infinitum. Using this approach, we can represent numbers [as large as](https://googology.fandom.com/wiki/Poincar%C3%A9_recurrence_time) the Poincaré recurrence time, an estimate of how long it would take for a [Boltzmann brain](https://en.wikipedia.org/wiki/Boltzmann_brain) to spontaneously form in a heat-dead universe. 
 
-One quickly apparent roadblock to expanding on this approach is that it fares poorly with standard typesetting. Accommodating the nesting of numbers more than 2 levels requires rows to either become irregularly spaced, or, if uniform spacing is desired, so far apart that reading can become a chore. As it turns out, there are yet more powerful notational systems which get around this issue, even for values no one would dream of using any variation of scientific notation for.
+One quickly apparent roadblock to expanding on this approach is that it fares poorly with standard typesetting. Accommodating the nesting of numbers more than 2 levels requires rows to either become irregularly spaced, or, if uniform spacing is desired, so far apart that reading can become a chore. Imagine having to deal with a figure like $$ 2^{15^{11^{14^{16}}}} $$ within the confines of a book!
 
-### Beyond Arabic Numerals
+As it turns out, there are yet more powerful notational systems which get around this issue, even for values no one would dream of using any variation of scientific notation for.
 
-Let's see how $ f_8(8) $ is displayed.
+## Beyond Arabic Numerals
+As we've seen, scientific notation based on Arabic numerals is able to easily handle virtually all scenarios most of us are ever likely to encounter, whether in our personal or professional lives, and by "most" I'm including here most physicists, computer scientists and other such people, who might be expected to encounter extremes far beyond the run of ordinary human experience. The fact is that most physicists aren't cosmologists contemplating how long it will take all of the observable universe's black holes to evaporate.
 
-What about $ f_{\omega}(3) $ ?
+Given the preceding, one might imagine that there's no need for even more powerful systems of notation, but that would be wrong. True as it may be that scientific notation suffices for almost all uses, there are still realms of thought in which it falls short. Take, for instance, the field of [computability](https://en.wikipedia.org/wiki/Computability_theory), which seeks to address the question of what functions are computable even in principle, and for those which aren't, whether they can be placed in some hierarchy of how far away from being computable they are. 
 
-Now let's try $ f_{\omega^{\omega}}(4) $.
+One of the seminal discoveries in this field was the proof by Church and Turing that the so-called [halting problem](https://en.wikipedia.org/wiki/Halting_problem) is [undecidable](https://en.wikipedia.org/wiki/Undecidable_problem): in plain English, this says that there can never be some general algorithm into which one can feed in any arbitrary program, and get in return a simple "yes/no" response to the question of whether the input program will ever halt.   
 
-So far so good. Now for $ f_{\varepsilon + 1}(3) $.
+Even knowing that no such universal oracle exists, it is still meaningful to ask whether, given some class of programs of a bounded size, what the longest run-time is for that subset of the class which does halt. We aren't asking for some single miracle machine to tell us whether each of the members of the class will ever halt, we just want to know the upper-bound on the waiting time for those which do eventually grind to a stop. Finding out how big this value gets is the essence of the [Busy Beaver problem](https://en.wikipedia.org/wiki/Busy_beaver).
 
-Here's an example of a Feferman-Schutte ordinal: $ f_{\Gamma}(3) $.
+With the Busy Beaver Problem, one usually works with a simple Turing machine which is allowed to have some number of states $n$. Let us denote here the length of the longest-running such machine as $BB(n)$. Then, the initial values of BB(n) are as follows:
+
+- $BB(2) = 6$
+- $BB(3) = 21$
+- $BB(4) = 107$
+
+So far, so reasonable. But then, things take a sudden turn:
+
+- $BB(5) = 47,176,870$
+
+$BB(6)$ is where we really run into trouble. An early bound for this was
+
+- $BB(6) > 10^{10^{10^{3,314,360}}}$
+
+but this has since been shown to be a very, very weak lower bound on the true value, and to even describe the most recent bound, we are forced to introduce a new way of writing numbers
+
+### Enter Knuth's Up-Arrow Notation
+
+We saw earlier that the key to making scientific notation powerful enough to handle even the most far-flung scenarios imaginable by cosmologists was **recursion**. As it turns out, this is the very same ingredient which lies at the root of Knuth's[^2] [Up-Arrow Notation](https://en.wikipedia.org/wiki/Knuth%27s_up-arrow_notation).
+
 
 [^1]: Which is **not** the whole universe, just the part whose light has had enough time to reach us.
+[^2]: Yes, that's the very same [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) who, amongst [other things](https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming), invented the LaTeX I'm using to lay out the numbers in this post.
