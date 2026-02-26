@@ -102,8 +102,105 @@ but this has since been shown to be a very, very weak lower bound on the true va
 
 ### Enter Knuth's Up-Arrow Notation
 
-We saw earlier that the key to making scientific notation powerful enough to handle even the most far-flung scenarios imaginable by cosmologists was **recursion**. As it turns out, this is the very same ingredient which lies at the root of Knuth's[^2] [Up-Arrow Notation](https://en.wikipedia.org/wiki/Knuth%27s_up-arrow_notation).
+We saw earlier that the key to making scientific notation powerful enough to handle even the most far-flung scenarios imaginable by cosmologists was **recursion**. As it turns out, this is the very same ingredient which lies at the root of Knuth's [^2] [Up-Arrow Notation](https://en.wikipedia.org/wiki/Knuth%27s_up-arrow_notation). 
 
+THe basic idea underlying Knuth's up-arrow notation is to progressively build up ever more powerful operations for constructing numbers, starting from multiplication. Whole-number exponentiation can be regarded as repeated multiplication, so for example
 
+$$ 3^3 = 3x3x3 $$
+
+If we denote exponentiation using the $\uparrow$ symbol, then we can represent $3^3$ as $3 \uparrow 3$. While this change of notation doesn't buy us anything on its own, it does open the way to systematic repetition of the approach in a uniform manner.
+
+As a step up from exponentation, we can consider the operation of **tetration**, which we define using the symbol $\uparrow\uparrow$. Given numbers $a$ and $b$, we can define $a \uparrow\uparrow b$ as $a^{a^{a^{...^{a}}}}$ which represents a tower of $b$ such $a$ values. For example, 
+
+$$3 \uparrow\uparrow 2 = 3 \uparrow 3 = 3^{3} = 9$$
+
+while 
+
+$$ 3 \uparrow\uparrow 3 =  3 \uparrow 3 \uparrow 3 = 3^{3^{3}} = 3^{27} = 7,625,597,484,987$$
+
+In a similar manner, 
+
+$$ 3 \uparrow\uparrow 4 = 3 \uparrow (3 \uparrow\uparrow 3) = 3 \uparrow 7,625,597,484,987$$
+
+or, in other words, an exponential tower of 3 values with more than **7.6 trillion** entries. Recalling 
+that the number of particles in the observable universe is estimated at less than $10^{80}$, it should be
+clear that we could never hope to write this value down in Arabic numerals, let alone at a rate fast enough
+to outrun the heat death scenarios discussed earlier. 
+
+Tetration is clearly an incredibly powerful operation, and yet, unbelievable as this may sound, it **still** 
+isn't powerful enough to represent the current lower bound for BB(6). To do so, we need to use tetration
+to define a more powerful operation called **pentation**, which will be represented as $\uparrow\uparrow\uparrow$.
+
+Pentation is simply tetration repeated, just as tetration is repeated exponentiation. Given $a$ and $b$, we have
+
+$$ a \uparrow\uparrow\uparrow b =
+ \underbrace{a \uparrow\uparrow (a \uparrow\uparrow a \dots (a \uparrow\uparrow a))}_{\text{b copies}} $$
+
+For example, 
+
+$$ 3 \uparrow\uparrow\uparrow 3 = 3 \uparrow\uparrow (3 \uparrow\uparrow 3)$$
+
+and 
+
+$$ 3 \uparrow\uparrow\uparrow 4 = 3 \uparrow\uparrow (3 \uparrow\uparrow (3 \uparrow\uparrow 3))$$
+
+To give an example which is still representable in scientific notation,
+
+$$ 2 \uparrow\uparrow\uparrow 4 = 2 \uparrow\uparrow (2 \uparrow\uparrow (2 \uparrow\uparrow 2))$$
+
+but $$ (2 \uparrow\uparrow 2) = 2^{2} = 4$$, so the above reduces to 
+
+$$ 2 \uparrow\uparrow\uparrow 4 = 2 \uparrow\uparrow (2 \uparrow\uparrow 4)$$
+
+We can reduce $2 \uparrow\uparrow 4$ to $ 2^{2^{2^{2}}}  = 2^{2^{4}} = 2^{16} = 65,536 $ 
+
+so 
+
+$$ 2 \uparrow\uparrow\uparrow 4 = 2^{65,536} \approx 10^{19,728} $$
+
+Using pentation finally allows us to write down the new lower bound for BB(6), which is given as
+
+$$ BB(6) > 2 \uparrow\uparrow\uparrow 5 $$
+
+which, using the preceding calculation for $2 \uparrow\uparrow\uparrow 4$, can be reduced to
+
+$$ BB(6) > 2 \uparrow\uparrow (10^{19,700}) $$
+
+Yes, just writing out all of the entries in this exponential tower would take far, far more particles than 
+we could fit into our observable universe, to say nothing of evaluating it in Arabic numerals.
+
+The great thing about Knuth's up-arrow notation is that it's immediately obvious how one can use a given
+operation to construct a new, more powerful one, with no hard limits to how far one can take the process.
+After pentation, we can define hexation, septation and so forth, even if we quickly run out of catchy names we can
+give to the new operators.
+
+To keep the number of arrows from getting too unwieldy, operators consisting of 4 or more up-arrows are usually
+written in the form $a \uparrow^{n} b$, where the $n$ indicates the number of up-arrows we would normally write. 
+For example, we can re-write $2 \uparrow\uparrow\uparrow 4$ as $2 \uparrow^{3} 4$, and 
+$3 \uparrow\uparrow\uparrow\uparrow 3$ as $3 \uparrow^{4} 3$. This - naturally - opens up the door to yet another
+round of recursiveness, as if we can have $3 \uparrow^{4} 3$, why not 
+
+$$3 \uparrow^{3 \uparrow^{4} 3} 3$$ 
+
+where the above expression uses an operator defined as having ${3 \uparrow^{4} 3}$ **up-arrows**. It may seem absurd
+to wish to continue ratcheting up the power of the notation in this manner, but it does provide real mathematical value 
+beyond just being entertaining for its own sake. Repeated application of this recursive technique was necessary to define
+an upper bound for [Graham's number](https://en.wikipedia.org/wiki/Graham%27s_number), a value drawn from the mathematical
+field of [Ramsey Theory](https://en.wikipedia.org/wiki/Ramsey_theory). 
+
+The upper bound for Graham's number has since been lowered considerably 
+(to less than $2 \uparrow\uparrow (2 \uparrow\uparrow 5138)$ ), but the need for more powerful notational systems persists, 
+even for mathematics which is easily comprehensible by a general audience. For example, it doesn't take much mathematical 
+background to understand how Turing machines work and what the Busy Beaver problem is about, yet it's quite likely that
+even the recursive extension of Knuth's up-arrow notation won't handle values like BB(10) and above. In a similar vein, the 
+topic of [hydra games](https://en.wikipedia.org/wiki/Hydra_game) is easily accessible to laymen, yet the lower bounds 
+for even relatively small [Kirby-Paris hydras](https://googology.fandom.com/wiki/Kirby-Paris_hydra) are well beyond the notational power of Knuth's system. The [TREE function](https://en.wikipedia.org/wiki/Kruskal%27s_tree_theorem#TREE_function) has a relatively
+elementary definition, but the numbers it generates are so much vaster than any mentioned on this page that it would take several more
+articles like this one to gradually work up to understanding TREE(3). In short, all of this isn't just about building castles in
+the sky for our own amusement.
+
+I think a good way of thinking about the increasingly powerful notational systems I've discussed on here is to consider them as a form of technology, in the exact same way we consider calculators, phones, computers and the internet to be technologies. Just like all of the aforementioned physical technologies, more powerful notational systems enable more efficient ways of thinking about thing we already know a little (or even a lot) about, while opening up new approaches, and offering new fields for consideration. To the bureaucrats in Ur contemplating how much wheat groups of peasants owed their king, handling values in the millions and billions would have seemed a pointless indulgence, just as Roman administrators would have dismissed the utility of being to handle trillions with minimum ease. What  is commonly regarded as more than sufficient in each age eventually comes to seem woefully limited in another, and we deceive ourselves if we think we are exempt from this pattern.       
+
+## Footnotes
 [^1]: Which is **not** the whole universe, just the part whose light has had enough time to reach us.
 [^2]: Yes, that's the very same [Donald Knuth](https://en.wikipedia.org/wiki/Donald_Knuth) who, amongst [other things](https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming), invented the LaTeX I'm using to lay out the numbers in this post.

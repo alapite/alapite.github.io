@@ -1,7 +1,6 @@
 ---
 author: Abiola Lapite
 title: GitHub Responds to the Vibe 
-mathjax: true
 tags:
 - Large Language Models
 - Machine Learning
