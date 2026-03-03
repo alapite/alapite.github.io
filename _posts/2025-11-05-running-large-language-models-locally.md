@@ -1,6 +1,8 @@
 ---
 author: Abiola Lapite
 tags: 
+  - apple
+  - hardware
   - llms
   - ai
   - machine-learning
