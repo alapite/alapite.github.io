@@ -46,6 +46,18 @@ on Mars itself, the outbound mission will need to have enough supplies for both 
 level of safety margin will also need to be accounted, as a voyage of such length is unlikely to be entirely smooth sailing.
 It is doubtful that any currently feasible launch system is capable of launching everything required all in one go. 
 
+Even putting aside the question of what's required to take the crew to Mars and bring them back, how exactly do these lucky
+few support themselves once they do get to Mars? Yes, Mars has water, albeit frozen in its ice caps or buried in permafrost, 
+but what about everything else? Let's make things easier for ourselves by supposing the [lethality of Martian soil](https://www.mdpi.com/2571-8789/5/3/37) 
+for plants can somehow be overcome, enabling our Mars voyagers to emulate Mark Watney's potato-growing in 
+[The Martian](https://en.wikipedia.org/wiki/The_Martian_(film)). That still leaves the problem of where these real-life Martians
+will obtain all of the mineral resources we take for granted on Earth, but which are essential to supporting any form of life
+more sophisticated than that in the early [Neolithic](https://en.wikipedia.org/wiki/Neolithic). Where will the iron, aluminium, 
+magnesium, potassium, tin, etc. come from? Even supposing Mars is replete with such resources (which we don't really know to be true),
+how are they going to be accessed? Someone has to dig for the ores, then process and refine them, but with what machinery? If the
+processing is going to be done on the spot, then all the tools needed must be sent from Earth. Otherwise, the refined resources must
+also be shipped from Earth, whether beforehand or alongside the manned space crew.
+
 As onerous as all of the preceding might sound, it only scratches the surface of the difficulties a Martian expedition would
 entail, as there's also the question of [radiation](https://www.scientificamerican.com/blog/life-unbounded/death-on-mars1/) [exposure](https://www.science.org/doi/10.1126/science.340.6136.1031) to deal with. The US Department of Energy (DoE) sets a maximum annual radiation exposure 
 limit of 20 millisieverts (mSv). A stay of 6 months on the ISS exposes astronauts to about 75 mSv, or nearly **4 times** the DoE limit. 
