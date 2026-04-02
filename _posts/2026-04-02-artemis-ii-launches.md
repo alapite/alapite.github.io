@@ -1,7 +1,6 @@
 ---
 author: Abiola Lapite
 title: Artemis II Launches
-mathjax: true
 tags: 
     - astronomy
     - engineering
@@ -9,7 +8,7 @@ tags:
     - space
 categories: physics
 ---
-Yesterday afternoon, at US Eastern Time, the NASA's Artemis II mission commenced, launched by the
+Yesterday afternoon, at 6:35pm US Eastern Time, the NASA's Artemis II mission commenced, launched by the
 [Space Launch System](https://en.wikipedia.org/wiki/Space_Launch_System) (SLS) rocket from the
 Kennedy Space Center and heading for a flyby of the moon. As virtually all of the media commentary 
 notes, this will be the first time in 53 years that a manned mission has gone beyond the 
