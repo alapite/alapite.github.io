@@ -94,6 +94,11 @@ prowess to the rest of the world. In as far as it serves as a substitute for old
 particular contest should be considered benign, but as far as actual science goes, the bits that are feasible[^1] aren't interesting, while the bits 
 that _are_ of even slight scientific interest[^2] aren't currently feasible.
 
+PS: Nature has a [good article up](https://www.nature.com/articles/d41586-026-00987-x) on why many scientists are at best tepid in their enthusiasm about NASA's latest mission. The following passage is entirely in keeping with my own views on the subject.
+>“Truthfully, as a quantum-computing theorist, it hasn’t really been on my radar at all,” says Scott Aaronson at the University of Texas at Austin. “Almost all of the science gets done, for a tiny fraction of the cost, by the unmanned missions.”
+>
+>Peter Woit, a mathematician and prominent physics blogger at Columbia University in New York City, agrees, saying that crewed spaceflight is “something I lost interest in very, very long ago”.
+
 [^1]: The "going to the Moon" part.
 
 [^2]: The "going to Mars" portion.
